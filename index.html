@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mecaniquanto — Gestão e Ordens de Serviço para Oficinas Mecânicas | Oferta Vitalícia</title>
+<meta name="description" content="Mecaniquanto: software 100% offline para oficinas mecânicas. Dashboard, OS, clientes, veículos, estoque e financeiro. Pagamento único, sem mensalidade. Acesso vitalício.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230B0E14'/%3E%3Ctext x='50' y='70' font-size='58' text-anchor='middle'%3E%F0%9F%94%A7%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0E14; --bg2:#121724; --card:#161D30; --line:rgba(255,255,255,.1);
+  --yellow:#FFC400; --orange:#FF6B00; --green:#00E676; --blue:#29B6F6;
+  --text:#F2F5FA; --muted:#A7B0C2; --radius:20px;
+  --cta:https://shop.maisfy.com.br/v2/checkout/Mx941hn1/Al2aqgr1;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.display{font-family:'Archivo',sans-serif;line-height:1.05;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{width:min(1160px,92%);margin:0 auto}
+.topbar{background:linear-gradient(90deg,#FF6B00,#FFC400);color:#140A00;text-align:center;font-weight:800;font-size:14px;padding:10px 12px;letter-spacing:.02em}
+.topbar b{background:#000;color:#FFC400;padding:2px 8px;border-radius:99px;margin:0 6px}
+header{position:sticky;top:0;z-index:50;background:rgba(11,14,20,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px}
+.logo-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--orange),var(--yellow));display:grid;place-items:center;font-size:24px;box-shadow:0 8px 24px rgba(255,107,0,.35)}
+.logo small{display:block;font-size:11px;font-weight:600;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:800;border-radius:14px;padding:16px 28px;font-size:17px;transition:.2s;cursor:pointer;border:0}
+.btn-cta{background:linear-gradient(135deg,#00E676 0%,#00C853 100%);color:#04120A;box-shadow:0 12px 32px rgba(0,230,118,.35), inset 0 1px 0 rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.02em}
+.btn-cta:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 18px 44px rgba(0,230,118,.45)}
+.btn-ghost{background:rgba(255,255,255,.08);border:1px solid var(--line);color:#fff}
+.btn-sm{padding:12px 20px;font-size:15px;border-radius:12px}
+.pulse{animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,230,118,.55)}70%{box-shadow:0 0 0 18px rgba(0,230,118,0)}100%{box-shadow:0 0 0 0 rgba(0,230,118,0)}}
+/* HERO */
+.hero{position:relative;padding:56px 0 30px;overflow:hidden;background:radial-gradient(900px 500px at 80% -10%, rgba(255,107,0,.28), transparent), radial-gradient(700px 500px at 10% 20%, rgba(41,182,246,.18), transparent), var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,196,0,.12);border:1px solid rgba(255,196,0,.35);color:#FFD84D;padding:8px 14px;border-radius:99px;font-size:13px;font-weight:700;margin-bottom:18px}
+.badge .dot{width:8px;height:8px;background:#00E676;border-radius:50%;box-shadow:0 0 10px #00E676;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.4}}
+.hero h1{font-size:clamp(36px,5.2vw,62px);font-weight:900}
+.hero h1 span{background:linear-gradient(90deg,#FFC400,#FF6B00);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{color:var(--muted);font-size:18px;margin:18px 0 22px;max-width:540px}
+.hero p.sub strong{color:#fff}
+.checks{display:grid;gap:10px;margin:20px 0 26px}
+.checks li{list-style:none;display:flex;gap:10px;align-items:flex-start;font-size:15.5px;color:#D8DEEA}
+.checks li i{width:26px;height:26px;flex:0 0 26px;border-radius:50%;background:rgba(0,230,118,.15);display:grid;place-items:center;font-style:normal;color:#00E676;font-weight:900}
+.price-box{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:8px 0 18px}
+.price-old{color:#7A8398;text-decoration:line-through;font-size:18px}
+.price-new{font-size:48px;font-weight:900;color:#fff}
+.price-new small{font-size:18px;color:var(--muted);font-weight:600}
+.installments{background:#00E676;color:#04120A;font-weight:900;padding:6px 12px;border-radius:10px;font-size:14px}
+.secure{display:flex;gap:16px;flex-wrap:wrap;color:#8B94A9;font-size:13px;margin-top:14px}
+.secure span{display:flex;align-items:center;gap:6px}
+/* mock dashboard */
+.mock{background:linear-gradient(180deg,#1B233A,#101525);border:1px solid rgba(255,255,255,.12);border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55);position:relative}
+.mock-top{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line);background:rgba(0,0,0,.25)}
+.mock-top i{width:12px;height:12px;border-radius:50%;display:block}
+.mock-body{padding:20px;display:grid;gap:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.kpi{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px}
+.kpi small{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.kpi strong{font-size:20px;display:block}
+.kpi em{font-style:normal;font-size:12px;color:#00E676;font-weight:700}
+.chart{background:rgba(255,255,255,.05);border-radius:14px;padding:16px;border:1px solid rgba(255,255,255,.07)}
+.bars{display:flex;align-items:end;gap:10px;height:110px;margin-top:12px}
+.bars div{flex:1;border-radius:8px 8px 4px 4px;background:linear-gradient(180deg,#FFC400,#FF6B00);min-height:20px;animation:grow 1.2s ease both}
+.bars div:nth-child(even){background:linear-gradient(180deg,#29B6F6,#1565C0)}
+.bars div:nth-child(1){height:45%}.bars div:nth-child(2){height:70%}.bars div:nth-child(3){height:55%}.bars div:nth-child(4){height:90%}.bars div:nth-child(5){height:65%}.bars div:nth-child(6){height:85%}.bars div:nth-child(7){height:100%}
+@keyframes grow{from{transform:scaleY(0);transform-origin:bottom}}
+.os-list{display:grid;gap:10px}
+.os-item{display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.07);padding:12px 14px;border-radius:12px;font-size:14px}
+.tag{font-size:11px;font-weight:800;padding:4px 10px;border-radius:99px;text-transform:uppercase;letter-spacing:.06em}
+.tag.open{background:rgba(255,196,0,.18);color:#FFC400;border:1px solid rgba(255,196,0,.4)}
+.tag.doing{background:rgba(41,182,246,.18);color:#29B6F6;border:1px solid rgba(41,182,246,.4)}
+.tag.done{background:rgba(0,230,118,.15);color:#00E676;border:1px solid rgba(0,230,118,.4)}
+.float{position:absolute;font-size:13px;font-weight:800;padding:10px 14px;border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,.4);animation:float 3.5s ease-in-out infinite}
+.float.f1{top:12%;right:-14px;background:#00E676;color:#04120A;transform:rotate(6deg)}
+.float.f2{bottom:18%;left:-16px;background:#FFC400;color:#221500;transform:rotate(-5deg);animation-delay:1.2s}
+@keyframes float{50%{translate:0 -10px}}
+.strip{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;padding:22px 0;color:#8B94A9;font-size:14px;font-weight:600;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:36px;background:rgba(255,255,255,.02)}
+.strip b{color:#fff}
+/* sections */
+section{padding:72px 0}
+.eyebrow{color:#FFC400;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:12px;margin-bottom:12px;display:block}
+h2.title{font-size:clamp(28px,3.8vw,44px);max-width:720px}
+p.lead{color:var(--muted);font-size:17px;max-width:680px;margin-top:12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:var(--radius);padding:26px;position:relative;overflow:hidden}
+.card:hover{border-color:rgba(255,196,0,.4);transform:translateY(-3px);transition:.25s}
+.card .icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:26px;margin-bottom:14px;background:rgba(255,196,0,.14);border:1px solid rgba(255,196,0,.25)}
+.card h3{font-size:19px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:15px}
+.dor{background:var(--bg2);border:1px solid var(--line)}
+.dor li{list-style:none;display:flex;gap:12px;margin:14px 0;color:#CBD3E3}
+.dor li span{width:32px;height:32px;flex:0 0 32px;border-radius:10px;display:grid;place-items:center;background:rgba(255,80,80,.15);font-size:18px}
+.vs{background:linear-gradient(135deg,#0E3A22,#0B2518);border:1px solid rgba(0,230,118,.3)}
+.vs li{list-style:none;display:flex;gap:12px;margin:14px 0}
+.vs li span{width:32px;height:32px;flex:0 0 32px;border-radius:10px;display:grid;place-items:center;background:rgba(0,230,118,.18);color:#00E676;font-weight:900}
+/* demo tabs */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 18px}
+.tab{padding:12px 18px;border-radius:99px;background:rgba(255,255,255,.07);border:1px solid var(--line);font-weight:700;font-size:14px;cursor:pointer}
+.tab.active{background:linear-gradient(90deg,#FFC400,#FF6B00);color:#1A0E00;border-color:transparent}
+.demo-panel{background:#0E1322;border:1px solid var(--line);border-radius:18px;padding:26px;min-height:220px}
+.demo-panel table{width:100%;border-collapse:collapse;font-size:14px}
+.demo-panel th{text-align:left;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em;padding:10px;border-bottom:1px solid var(--line)}
+.demo-panel td{padding:12px 10px;border-bottom:1px solid rgba(255,255,255,.06)}
+/* compare */
+.compare{width:100%;border-collapse:collapse;margin-top:28px;background:#111726;border-radius:18px;overflow:hidden;border:1px solid var(--line);font-size:15px}
+.compare th,.compare td{padding:16px;text-align:center;border-bottom:1px solid rgba(255,255,255,.07)}
+.compare th:first-child,.compare td:first-child{text-align:left}
+.compare thead th{background:#1A2136}
+.compare thead th.highlight{background:linear-gradient(135deg,#FFC400,#FF6B00);color:#1A0E00}
+.compare td.yes{color:#00E676;font-weight:900}.compare td.no{color:#FF5252;font-weight:700}
+/* gallery */
+.gallery{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-top:30px}
+.gallery img{border-radius:18px;border:1px solid var(--line);background:#111726;object-fit:cover;width:100%;height:100%;min-height:260px}
+.gallery .col{display:grid;gap:16px}
+/* pricing */
+.pricing{background:radial-gradient(800px 400px at 50% 0%, rgba(255,196,0,.18), transparent), var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
+.offer{width:min(560px,100%);margin:30px auto 0;background:#fff;color:#111;border-radius:26px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.offer-head{background:linear-gradient(90deg,#FF6B00,#FFC400);padding:14px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-size:13px}
+.offer-body{padding:34px 32px}
+.offer-body h3{font-size:26px}
+.count{display:flex;gap:10px;justify-content:center;margin:18px 0}
+.count div{background:#0B0E14;color:#fff;border-radius:12px;padding:10px 14px;min-width:74px}
+.count strong{font-size:26px;display:block}.count small{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#A7B0C2}
+.old-price{text-decoration:line-through;color:#888;font-size:18px}
+.new-price{font-size:58px;font-weight:900;line-height:1}
+.new-price small{font-size:18px}
+.guarantee{display:flex;gap:14px;text-align:left;background:#F3F6FB;border-radius:16px;padding:16px;margin:20px 0;font-size:14px;color:#334}
+/* faq */
+.faq{max-width:760px;margin:28px auto 0;display:grid;gap:12px;text-align:left}
+.faq-item{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.faq-q{width:100%;background:none;border:0;color:#fff;font-weight:700;font-size:16px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--muted);font-size:15px}
+.faq-a div{padding:0 20px 18px}
+.faq-item.open .faq-a{max-height:240px}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+.step{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center}
+.step b{width:42px;height:42px;display:grid;place-items:center;margin:0 auto 12px;border-radius:50%;background:linear-gradient(135deg,#FFC400,#FF6B00);color:#1A0E00;font-size:18px}
+/* footer */
+footer{padding:36px 0 110px;color:#7A8398;font-size:13px;text-align:center}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(11,14,20,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:12px}
+.sticky-inner{width:min(1160px,92%);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.sticky-inner strong{font-size:18px}.sticky-inner small{color:var(--muted);display:block;font-size:13px}
+@media(max-width:900px){
+  .hero-grid,.grid3,.grid2,.gallery,.steps{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .float.f1{right:8px}.float.f2{left:8px}
+  .nav .hide-m{display:none}
+  section{padding:52px 0}
+  .sticky-inner strong{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">⚠️ OFERTA DE LANÇAMENTO: de <s>R$297</s> por apenas <b>R$119,90</b> + acesso VITALÍCIO sem mensalidade</div>
+
+<header>
+  <div class="container nav">
+    <div class="logo"><div class="logo-mark">🔧</div><div>MecaniQuanto<small>Gestão para oficinas</small></div></div>
+    <div class="hide-m" style="display:flex;gap:22px;color:#B9C1D3;font-size:14px;font-weight:600">
+      <a href="#funcionalidades">Funcionalidades</a>
+      <a href="#demo">Demonstração</a>
+      <a href="#comparar">Comparar</a>
+      <a href="#faq">Dúvidas</a>
+    </div>
+    <a class="btn btn-cta btn-sm pulse" href="https://shop.maisfy.com.br/v2/checkout/Mx941hn1/Al2aqgr1">QUERO ORGANIZAR MINHA OFICINA</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge"><span class="dot"></span> 100% OFFLINE • SEM MENSALIDADE • PAGAMENTO ÚNICO</div>
+      <h1>Chega de caderno e planilha. <span>Gerencie sua oficina como um profissional.</span></h1>
+      <p class="sub">O <strong>Mecaniquanto</strong> é o software completo para oficinas mecânicas: <strong>ordens de serviço, clientes, veículos, estoque e financeiro</strong> em um só programa para Windows. Instale em 5 minutos e use <strong>para sempre.</strong></p>
+      <ul class="checks">
+        <li><i>✓</i> <span><strong>Dashboard inteligente</strong> com faturamento, OS em aberto e gráfico entradas x saídas</span></li>
+        <li><i>✓</i> <span><strong>Ordens de Serviço</strong> com status, previsão de entrega e exportação para Excel</span></li>
+        <li><i>✓</i> <span><strong>Funciona 100% offline</strong> — seus dados nunca saem do seu computador</span></li>
+      </ul>
+      <div class="price-box">
+        <div><div class="price-old">R$ 297,00</div><div class="price-new">R$119,90 <small>à vista</small></div></div>
+        <div class="installments">ou 12x de R$ 9,99</div>
+      </div>
+      <a class="btn btn-cta pulse" style="width:100%;font-size:19px" href="https://shop.maisfy.com.br/v2/checkout/Mx941hn1/Al2aqgr1">🔧 SIM, QUERO O MECANIQUANTO AGORA →</a>
+      <div class="secure"><span>🔒 Compra segura</span><span>⚡ Entrega imediata</span><span>💻 Windows 7/8/10/11</span><span>⭐ Acesso vitalício</span></div>
+    </div>
+    <div>
+      <div class="mock">
+        <div class="float f1">+ R$ 8.450 faturado no mês ✓</div>
+        <div class="float f2">📋 Nova OS #128 criada</div>
+        <div class="mock-top"><i style="background:#FF5F57"></i><i style="background:#FFBD2E"></i><i style="background:#28CA42"></i><span style="margin-left:8px;color:#8B94A9;font-size:13px;font-weight:700">Mecaniquanto — Dashboard</span></div>
+        <div class="mock-body">
+          <div class="kpis">
+            <div class="kpi"><small>Clientes</small><strong>248</strong><em>+12 este mês</em></div>
+            <div class="kpi"><small>Veículos</small><strong>312</strong><em>+18 este mês</em></div>
+            <div class="kpi"><small>OS Abertas</small><strong style="color:#FFC400">17</strong><em>5 p/ entregar</em></div>
+            <div class="kpi"><small>Faturamento</small><strong>R$8.450</strong><em>▲ 23%</em></div>
+          </div>
+          <div class="chart"><small style="color:var(--muted);font-weight:800;letter-spacing:.08em;font-size:11px">MOVIMENTAÇÃO FINANCEIRA — ENTRADAS X SAÍDAS</small><div class="bars"><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+          <div class="os-list">
+            <div class="os-item"><span><b>#128</b> — Gol 1.6 • Troca de freios • João S.</span><span class="tag doing">Em andamento</span></div>
+            <div class="os-item"><span><b>#127</b> — Hilux • Revisão 40k • Carlos M.</span><span class="tag open">Aberta</span></div>
+            <div class="os-item"><span><b>#126</b> — Onix • Troca óleo + filtros • Ana P.</span><span class="tag done">Concluída</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container"><div class="strip"><span>✔ <b>Pagamento único</b></span><span>✔ <b>Sem internet</b> após instalar</span><span>✔ <b>Suporte</b> por e-mail</span><span>✔ <b>Backup</b> em 1 clique</span><span>✔ <b>2GB RAM</b> roda liso</span></div></div>
+</div>
+
+<section id="dores" style="padding-bottom:0">
+  <div class="container grid2">
+    <div class="card dor">
+      <span class="eyebrow">❌ O problema</span>
+      <h2 class="title">Sua oficina está perdendo dinheiro sem você ver?</h2>
+      <ul style="margin-top:10px">
+        <li><span>😤</span> OS em papel que some, rasga e ninguém acha depois</li>
+        <li><span>💸</span> Peça no estoque que você cobra errado ou esquece de cobrar</li>
+        <li><span>📉</span> Fim do mês sem saber se lucrou ou tomou prejuízo</li>
+        <li><span>⏳</span> Cliente ligando perguntando “ficou pronto?” e você sem resposta</li>
+        <li><span>☁️</span> Sistemas com mensalidade cara que param se a internet cai</li>
+      </ul>
+    </div>
+    <div class="card vs">
+      <span class="eyebrow" style="color:#00E676">✅ A solução</span>
+      <h2 class="title">Tudo da sua oficina em uma tela</h2>
+      <ul style="margin-top:10px">
+        <li><span>✓</span> <div><b>Ordens de serviço profissionais</b><br><span style="color:#A9B7C9">Crie, acompanhe status e exporte para Excel em segundos.</span></div></li>
+        <li><span>✓</span> <div><b>Financeiro no automático</b><br><span style="color:#A9B7C9">Concluiu a OS? Já vira entrada no caixa. Sem retrabalho.</span></div></li>
+        <li><span>✓</span> <div><b>Estoque inteligente</b><br><span style="color:#A9B7C9">10 categorias prontas, valor total calculado sozinho.</span></div></li>
+        <li><span>✓</span> <div><b>100% offline e privado</b><br><span style="color:#A9B7C9">Sem login, sem nuvem, sem rastreamento. É seu de verdade.</span></div></li>
+      </ul>
+      <a class="btn btn-cta" style="margin-top:16px;width:100%" href="https://shop.maisfy.com.br/v2/checkout/Mx941hn1/Al2aqgr1">QUERO ESSA ORGANIZAÇÃO →</a>
+    </div>
+  </div>
+</section>
+
+<section id="funcionalidades">
+  <div class="container">
+    <span class="eyebrow">🛠️ Funcionalidades completas</span>
+    <h2 class="title">Um sistema. Seis superpoderes para sua oficina.</h2>
+    <p class="lead">Feito para quem mexe com carro, não com computador. Simples, rápido e direto ao ponto.</p>
+    <div class="grid3">
+      <div class="card"><div class="icon">📊</div><h3>Dashboard Inteligente</h3><p>Total de clientes, veículos, OS em aberto, faturamento do mês, gráfico entradas x saídas e últimas movimentações em tempo real.</p></div>
+      <div class="card"><div class="icon">👤</div><h3>Gestão de Clientes</h3><p>Cadastro completo com telefone, e-mail e endereço. Busca por nome ou telefone, edição e exclusão em 1 clique.</p></div>
+      <div class="card"><div class="icon">🚗</div><h3>Controle de Veículos</h3><p>Veículos vinculados ao dono. Marca, modelo, ano e placa com filtros inteligentes por placa ou cliente.</p></div>
+      <div class="card"><div class="icon">📋</div><h3>Ordens de Serviço</h3><p>Status Aberta, Em Andamento, Concluída e Cancelada + previsão de entrega e exportação CSV para Excel.</p></div>
+      <div class="card"><div class="icon">📦</div><h3>Estoque de Peças</h3><p>Categoria, quantidade e preço. 10 categorias padrão (Motor, Freios, Suspensão...) e valor total automático.</p></div>
+      <div class="card"><div class="icon">💰</div><h3>Financeiro + Backup</h3><p>Entradas e saídas com filtros e saldo automático. Backup JSON completo e restauração em 1 clique.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="demo" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="container">
+    <span class="eyebrow">👀 Demonstração interativa</span>
+    <h2 class="title">Veja como fica na prática</h2>
+    <p class="lead">Clique nas abas e explore o que o Mecaniquanto faz por você todos os dias.</p>
+    <div class="tabs">
+      <button class="tab active" data-tab="os">📋 Ordens de Serviço</button>
+      <button class="tab" data-tab="fin">💰 Financeiro</button>
+      <button class="tab" data-tab="est">📦 Estoque</button>
+    </div>
+    <div class="demo-panel" id="panel-os">
+      <table><tr><th>OS</th><th>Cliente / Veículo</th><th>Serviço</th><th>Status</th><th>Valor</th></tr>
+      <tr><td><b>#128</b></td><td>João Silva — Gol 1.6 / ABC1D23</td><td>Pastilhas + discos freio</td><td><span class="tag doing">Em andamento</span></td><td><b>R$ 890</b></td></tr>
+      <tr><td><b>#127</b></td><td>Carlos Mendes — Hilux 2022</td><td>Revisão 40.000 km</td><td><span class="tag open">Aberta</span></td><td><b>R$ 1.450</b></td></tr>
+      <tr><td><b>#126</b></td><td>Ana Paula — Onix 2021</td><td>Óleo + filtros</td><td><span class="tag done">Concluída</span></td><td><b>R$ 320</b></td></tr></table>
+    </div>
+    <div class="demo-panel" id="panel-fin" style="display:none">
+      <table><tr><th>Data</th><th>Descrição</th><th>Tipo</th><th>Valor</th></tr>
+      <tr><td>14/10</td><td>OS #126 — concluída automaticamente</td><td><span class="tag done">Entrada</span></td><td style="color:#00E676"><b>+ R$ 320,00</b></td></tr>
+      <tr><td>13/10</td><td>Compra pastilhas — fornecedor</td><td><span class="tag open">Saída</span></td><td style="color:#FF5252"><b>- R$ 210,00</b></td></tr>
+      <tr><td>12/10</td><td>OS #124 — revisão Saveiro</td><td><span class="tag done">Entrada</span></td><td style="color:#00E676"><b>+ R$ 1.200,00</b></td></tr>
+      <tr><td colspan="3" style="text-align:right;color:var(--muted)">Saldo do período:</td><td><b>R$ 8.450,00</b></td></tr></table>
+    </div>
+    <div class="demo-panel" id="panel-est" style="display:none">
+      <table><tr><th>Peça</th><th>Categoria</th><th>Qtd</th><th>Preço</th></tr>
+      <tr><td>Pastilha de freio Bosch</td><td>Freios</td><td>14 un</td><td>R$ 89,90</td></tr>
+      <tr><td>Amortecedor dianteiro</td><td>Suspensão</td><td>6 un</td><td>R$ 249,90</td></tr>
+      <tr><td>Correia dentada</td><td>Motor</td><td>10 un</td><td>R$ 119,90</td></tr>
+      <tr><td colspan="3" style="text-align:right;color:var(--muted)">Valor total em estoque (auto):</td><td><b>R$ 12.340,00</b></td></tr></table>
+    </div>
+    <div style="text-align:center;margin-top:24px"><a class="btn btn-cta pulse" href="https://shop.maisfy.com.br/v2/checkout/Mx941hn1/Al2aqgr1">TESTAR NA MINHA OFICINA POR R$119,90 →</a><p style="color:var(--muted);font-size:13px;margin-top:10px">Requisitos mínimos: Windows 7/8/10/11 • 1GHz • 2GB RAM • 100MB disco • Sem internet</p></div>
+  </div>
+</section>
+
+<section id="comparar">
+  <div class="container">
+    <span class="eyebrow">⚖️ Comparativo honesto</span>
+    <h2 class="title">Por que donos de oficina estão trocando mensalidade pelo Mecaniquanto?</h2>
+    <table class="compare">
+      <thead><tr><th>Recurso</th><th class="highlight">🔧 Mecaniquanto</th><th>Sistemas comuns</th></tr></thead>
+      <tbody>
+        <tr><td>Preço</td><td><b style="color:#00E676">Pagamento único R$119,90</b></td><td class="no">R$79–199 / mês ✕</td></tr>
+        <tr><td>Internet</td><td class="yes">Não precisa ✓</td><td class="no">Obrigatória ✕</td></tr>
+        <tr><td>Privacidade</td><td class="yes">Total — dados só no seu PC ✓</td><td class="no">Dados na nuvem ✕</td></tr>
+        <tr><td>Instalação</td><td class="yes">Simples .exe em 5 min ✓</td><td class="no">Complexa ✕</td></tr>
+        <tr><td>Curva de aprendizado</td><td class="yes">Baixa ✓</td><td class="no">Alta ✕</td></tr>
+        <tr><td>Funciona offline</td><td class="yes">Sim, 100% ✓</td><td class="no">Raramente ✕</td></tr>
+      </tbody>
+    </table>
+    <div class="gallery">
+      <img src="https://plwdesign.online/storage/products/355/6513a672-910f-4f89-82de-14d01bfe1c49.jpg" alt="Mecaniquanto tela principal" loading="lazy" onerror="this.style.display='none'">
+      <div class="col">
+        <img src="https://plwdesign.online/storage/products/355/gallery/09839a40-a9a8-4f63-b8fb-db718f7398c2.jpg" alt="Mecaniquanto funcionalidade" loading="lazy" onerror="this.style.display='none'">
+        <img src="https://plwdesign.online/storage/products/355/gallery/9e0e5368-91d0-4979-b7c0-556ab1d09dd9.jpg" alt="Mecaniquanto dashboard" loading="lazy" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="container">
+    <span class="eyebrow">🚀 Como usar</span>
+    <h2 class="title">Em menos de 5 minutos sua oficina está organizada</h2>
+    <div class="steps">
+      <div class="step"><b>1</b><h3>Baixe</h3><p style="color:var(--muted);font-size:14px">Entrega imediata após o pagamento. Link de download na hora.</p></div>
+      <div class="step"><b>2</b><h3>Instale</h3><p style="color:var(--muted);font-size:14px">Execute o .exe no Windows. Sem cadastro, sem login.</p></div>
+      <div class="step"><b>3</b><h3>Cadastre</h3><p style="color:var(--muted);font-size:14px">Clientes, veículos e peças do estoque.</p></div>
+      <div class="step"><b>4</b><h3>Lucre</h3><p style="color:var(--muted);font-size:14px">Crie OS, acompanhe pelo dashboard e veja o caixa crescer.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="oferta" class="pricing">
+  <div class="container">
+    <span class="eyebrow">🔥 Oferta por tempo limitado</span>
+    <h2 class="title" style="margin:0 auto;text-align:center">Acesso vitalício por menos que 2 trocas de óleo</h2>
+    <p class="lead" style="margin:12px auto 0;text-align:center">Pague uma vez. Use para sempre. Sem mensalidade, sem pegadinha.</p>
+    <div class="offer">
+      <div class="offer-head">⏳ Essa condição sai do ar em breve</div>
+      <div class="offer-body">
+        <h3>🔧 Mecaniquanto Completo</h3>
+        <p style="color:#556;font-size:14px;margin:6px 0">Dashboard + OS + Clientes + Veículos + Estoque + Financeiro + Backup</p>
+        <div class="count"><div><strong id="hh">23</strong><small>horas</small></div><div><strong id="mm">59</strong><small>min</small></div><div><strong id="ss">59</strong><small>seg</small></div></div>
+        <div class="old-price">De R$ 297,00</div>
+        <div class="new-price">R$ 119,90 <small>à vista</small></div>
+        <p style="font-weight:800;color:#00A651">ou 12x de R$ 9,99 no cartão</p>
+        <a class="btn btn-cta pulse" style="width:100%;margin-top:16px;font-size:19px" href="https://shop.maisfy.com.br/v2/checkout/Mx941hn1/Al2aqgr1">GARANTIR MEU ACESSO VITALÍCIO →</a>
+        <div class="guarantee"><div style="font-size:38px">🛡️</div><div><b>Compra 100% segura + entrega imediata.</b><br>Você recebe o download logo após a confirmação do pagamento. Suporte via e-mail para dúvidas e instalação.</div></div>
+        <p style="font-size:12px;color:#777">🔒 Pagamento seguro via Maisfy • Pix • Cartão • Entrega imediata • Windows 7/8/10/11</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="text-align:center">
+  <div class="container">
+    <span class="eyebrow">💬 Perguntas frequentes</span>
+    <h2 class="title" style="margin:0 auto">Ainda tem dúvida? A gente responde.</h2>
+    <div class="faq">
+      <div class="faq-item"><button class="faq-q">É vitalício mesmo? <span>+</span></button><div class="faq-a"><div>Sim! Pagamento único de R$119,90, sem mensalidades ou taxas escondidas. Use para sempre.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Preciso de internet para usar? <span>+</span></button><div class="faq-a"><div>Não. Após baixar, o Mecaniquanto funciona 100% offline. Ideal para oficina com internet instável.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Meus dados ficam seguros? <span>+</span></button><div class="faq-a"><div>Sim. Tudo fica salvo localmente no seu computador em JSON. Sem nuvem, sem login, sem rastreamento. Você ainda pode exportar backup em 1 clique.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Posso usar em mais de um computador? <span>+</span></button><div class="faq-a"><div>Sim. Os dados são locais — basta usar a função Backup e Restauração para levar de um PC para outro.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Roda no meu PC? <span>+</span></button><div class="faq-a"><div>Se é Windows 7, 8, 10 ou 11 com 1GHz, 2GB RAM e 100MB livres, roda liso. É super leve.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Como recebo o produto? <span>+</span></button><div class="faq-a"><div>Envio imediato: após a confirmação do pagamento na Maisfy, você recebe o link para baixar o instalador .exe.</div></div></div>
+      <div class="faq-item"><button class="faq-q">Tem suporte? <span>+</span></button><div class="faq-a"><div>Sim, suporte via e-mail para dúvidas, sugestões e bugs.</div></div></div>
+    </div>
+    <a class="btn btn-cta" style="margin-top:28px" href="https://shop.maisfy.com.br/v2/checkout/Mx941hn1/Al2aqgr1">QUERO COMEÇAR AGORA — R$119,90 →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div style="font-weight:900;color:#fff;font-size:16px;margin-bottom:8px">🔧 MecaniQuanto — Gestão para Oficinas Mecânicas</div>
+    <p>Produto digital • Entrega imediata • Suporte via e-mail • Requisitos: Windows 7/8/10/11 (32/64 bits)</p>
+    <p style="margin-top:8px">© 2026 MecaniQuanto. Todos os direitos reservados. Esta página não é afiliada à Microsoft® ou Google®.</p>
+  </div>
+</footer>
+
+<div class="sticky">
+  <div class="sticky-inner">
+    <div><small>🔥 Oferta vitalícia termina em <b id="mini-timer" style="color:#FFC400">23:59:59</b></small><strong>R$119,90 <span style="color:#7A8398;font-weight:400;text-decoration:line-through;font-size:14px">R$297</span> <span style="background:#00E676;color:#04120A;font-size:12px;padding:2px 8px;border-radius:99px">-60%</span></strong></div>
+    <a class="btn btn-cta btn-sm pulse" href="https://shop.maisfy.com.br/v2/checkout/Mx941hn1/Al2aqgr1">COMPRAR AGORA →</a>
+  </div>
+</div>
+
+<script>
+// Tabs
+document.querySelectorAll('.tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    ['os','fin','est'].forEach(k=>{
+      document.getElementById('panel-'+k).style.display = (btn.dataset.tab===k?'block':'none');
+    });
+  });
+});
+// FAQ
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement;
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  });
+});
+// Countdown (24h persistente)
+let end = localStorage.getItem('mq_end');
+if(!end || +end < Date.now()){ end = Date.now()+24*3600*1000; localStorage.setItem('mq_end', end); }
+function tick(){
+  let d = Math.max(0, +end - Date.now());
+  let h=Math.floor(d/3600000), m=Math.floor(d%3600000/60000), s=Math.floor(d%60000/1000);
+  const p=n=>String(n).padStart(2,'0');
+  document.getElementById('hh').textContent=p(h);
+  document.getElementById('mm').textContent=p(m);
+  document.getElementById('ss').textContent=p(s);
+  document.getElementById('mini-timer').textContent=p(h)+':'+p(m)+':'+p(s);
+}
+setInterval(tick,1000); tick();
+// Animação de entrada
+const obs=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.style.opacity=1; e.target.style.transform='none'; }}),{threshold:.12});
+document.querySelectorAll('.card,.step,.offer').forEach(el=>{ el.style.opacity=0; el.style.transform='translateY(24px)'; el.style.transition='all .6s ease'; obs.observe(el); });
+</script>
+</body>
+</html>
