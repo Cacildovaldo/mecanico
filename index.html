@@ -97,12 +97,13 @@ p.lead{color:var(--muted);font-size:17px;max-width:680px;margin-top:12px}
 .card .icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:26px;margin-bottom:14px;background:rgba(255,196,0,.14);border:1px solid rgba(255,196,0,.25)}
 .card h3{font-size:19px;margin-bottom:8px}
 .card p{color:var(--muted);font-size:15px}
-.dor{background:var(--bg2);border:1px solid var(--line)}
-.dor li{list-style:none;display:flex;gap:12px;margin:14px 0;color:#CBD3E3}
-.dor li span{width:32px;height:32px;flex:0 0 32px;border-radius:10px;display:grid;place-items:center;background:rgba(255,80,80,.15);font-size:18px}
+.dor li{list-style:none;display:flex;gap:12px;margin:14px 0;color:#CBD3E3;align-items:flex-start}
+.dor li > span:first-child{width:32px;height:32px;flex:0 0 32px;border-radius:10px;display:grid;place-items:center;background:rgba(255,80,80,.15);font-size:18px}
 .vs{background:linear-gradient(135deg,#0E3A22,#0B2518);border:1px solid rgba(0,230,118,.3)}
-.vs li{list-style:none;display:flex;gap:12px;margin:14px 0}
-.vs li span{width:32px;height:32px;flex:0 0 32px;border-radius:10px;display:grid;place-items:center;background:rgba(0,230,118,.18);color:#00E676;font-weight:900}
+.vs li{list-style:none;display:flex;gap:12px;margin:16px 0;align-items:flex-start}
+.vs li > span.tick{width:32px;height:32px;flex:0 0 32px;border-radius:10px;display:grid;place-items:center;background:rgba(0,230,118,.18);color:#00E676;font-weight:900}
+.vs li div{flex:1;min-width:0}
+.vs li div span.desc{color:#A9B7C9;font-size:14px;line-height:1.5;display:block;margin-top:2px}
 /* demo tabs */
 .tabs{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 18px}
 .tab{padding:12px 18px;border-radius:99px;background:rgba(255,255,255,.07);border:1px solid var(--line);font-weight:700;font-size:14px;cursor:pointer}
@@ -238,10 +239,10 @@ footer{padding:36px 0 110px;color:#7A8398;font-size:13px;text-align:center}
       <span class="eyebrow" style="color:#00E676">✅ A solução</span>
       <h2 class="title">Tudo da sua oficina em uma tela</h2>
       <ul style="margin-top:10px">
-        <li><span>✓</span> <div><b>Ordens de serviço profissionais</b><br><span style="color:#A9B7C9">Crie, acompanhe status e exporte para Excel em segundos.</span></div></li>
-        <li><span>✓</span> <div><b>Financeiro no automático</b><br><span style="color:#A9B7C9">Concluiu a OS? Já vira entrada no caixa. Sem retrabalho.</span></div></li>
-        <li><span>✓</span> <div><b>Estoque inteligente</b><br><span style="color:#A9B7C9">10 categorias prontas, valor total calculado sozinho.</span></div></li>
-        <li><span>✓</span> <div><b>100% offline e privado</b><br><span style="color:#A9B7C9">Sem login, sem nuvem, sem rastreamento. É seu de verdade.</span></div></li>
+        <li><span class="tick">✓</span> <div><b>Ordens de serviço profissionais</b><span class="desc">Crie, acompanhe status e exporte para Excel em segundos.</span></div></li>
+        <li><span class="tick">✓</span> <div><b>Financeiro no automático</b><span class="desc">Concluiu a OS? Já vira entrada no caixa. Sem retrabalho.</span></div></li>
+        <li><span class="tick">✓</span> <div><b>Estoque inteligente</b><span class="desc">10 categorias prontas, valor total calculado sozinho.</span></div></li>
+        <li><span class="tick">✓</span> <div><b>100% offline e privado</b><span class="desc">Sem login, sem nuvem, sem rastreamento. É seu de verdade.</span></div></li>
       </ul>
       <a class="btn btn-cta" style="margin-top:16px;width:100%" href="https://shop.maisfy.com.br/v2/checkout/Mx941hn1/Al2aqgr1">QUERO ESSA ORGANIZAÇÃO →</a>
     </div>
